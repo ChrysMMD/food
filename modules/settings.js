@@ -1,0 +1,4 @@
+export const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjcHZvcnd1bWpla2R1b2RxYmlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA3NTE1MjksImV4cCI6MjAyNjMyNzUyOX0.yUourM_pQ0R-4_5pJQfcmlH67-Cfxo1OXm8C5yrp30c";
+
+export const endpoint = "https://fcpvorwumjekduodqbis.supabase.co/rest/v1/Recipes";
+

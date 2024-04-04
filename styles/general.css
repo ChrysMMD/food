@@ -1,0 +1,21 @@
+html {
+  --theme-color: 356.8 100% 32.69%;
+  scroll-behavior: smooth;
+  font-family: system-ui;
+  line-height: 1.5;
+  font-size: 1.1rem;
+  color: hsl(249deg 15% 35%);
+
+  background: #e2e3e3;
+  -webkit-font-smoothing: antialiased;
+}
+
+:target {
+  scroll-margin-top: 4rem;
+}
+
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}

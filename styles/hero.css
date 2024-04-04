@@ -1,0 +1,32 @@
+header:is(body > *) {
+  --padding-bottom: 6rem;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  gap: 2rem;
+  align-items: center;
+  background: #16384e;
+  min-height: 30svh;
+  color: #fff;
+}
+
+.content {
+  flex: 1 1 300px;
+  display: grid;
+  gap: 1rem;
+}
+
+h1 {
+  font-size: clamp(2rem, 2.1vw + 1.5rem, 2.8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  hyphens: auto;
+  text-transform: uppercase;
+  padding-left: 5rem;
+}
+
+.text-gradient {
+  background: #d62828;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}

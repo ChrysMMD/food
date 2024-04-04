@@ -1,0 +1,356 @@
+form {
+  --form-bg: hsl(0 0% 100% / 90%);
+  position: relative;
+  margin-block: 0 2rem;
+  padding: 1rem;
+  background: var(--form-bg);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+
+  display: grid;
+  grid-template-columns: minmax(min(100%, 200px), auto) 1fr;
+  gap: 1.5rem 1rem;
+
+  > :not(button) {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: subgrid;
+  }
+
+  > button {
+    grid-column: 2;
+    place-self: start;
+  }
+}
+
+.form-group {
+  display: grid;
+  gap: 5px;
+}
+
+.inline {
+  justify-content: start;
+}
+
+.inline label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding-block: 0.5rem;
+  padding-inline: 0.4rem 0.7rem;
+  margin-inline-start: -0.4rem;
+  border-radius: 10px;
+}
+
+.inline:focus-within label,
+.inline label:is(:hover, :focus) {
+  background: hsl(var(--theme-color) / 10%);
+  box-shadow: inset 0 0 0 1px hsl(var(--theme-color) / 20%);
+}
+
+label,
+.legend {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+  display: grid;
+  align-self: start;
+  gap: 2px;
+  cursor: pointer;
+  font-variation-settings: "wdth" 100;
+}
+
+.form-group:focus-within :is(label, .hint) {
+  color: hsl(var(--theme-color));
+}
+
+input:not([type="range"]) {
+  appearance: none;
+}
+
+input:is([type="text"], [type="number"], [type="date"]),
+textarea {
+  color: #212121;
+  box-shadow: 0 0 0 1px #d3d3d3;
+  border: 2px solid transparent;
+  border: 0;
+  background: #f5f5f5;
+  padding-block: 8px 10px;
+  padding-inline: 12px;
+  border-radius: 4px;
+  font-size: max(16px, 1rem);
+  outline: none;
+  caret-color: hsl(302deg 40% 55%);
+  resize: none;
+  transition: 0.1s background;
+}
+
+:is(textarea, input[type]:where(:not([type="range"]))):focus-visible {
+  outline: 2px solid hsl(var(--theme-color));
+}
+
+textarea {
+  min-block-size: 7rem;
+}
+
+input:is([name="age_limit"], [name="price"], [name="metascore"]) {
+  inline-size: 8ch;
+}
+
+:is(input, textarea):focus-visible {
+  border-color: hsl(var(--theme-color));
+}
+
+/* Checkbox & Radio btns */
+input:is([type="checkbox"], [type="radio"]) {
+  block-size: 1.2rem;
+  inline-size: 1.2rem;
+  margin: 0;
+  border-radius: 4px;
+  display: grid;
+  outline: none;
+  transition: 0.1s;
+  will-change: background, box-shadow;
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 0 hsl(var(--theme-color));
+}
+
+input[type="radio"]:checked {
+  box-shadow: inset 0 0 0 0.25em hsl(var(--theme-color));
+}
+
+input[type="checkbox"] {
+  display: grid;
+}
+
+input[type="checkbox"]::after {
+  content: "";
+  block-size: 0.45em;
+  inline-size: 0.8em;
+  border: solid #fff;
+  border-width: 0 0 3px 3px;
+  place-self: center;
+  transform: translateY(-0.05em) rotate(-45deg);
+  transition: 0.1s;
+  opacity: 0;
+}
+
+input[type="checkbox"]:checked {
+  background: currentColor;
+  border-color: currentColor;
+  color: hsl(var(--theme-color));
+}
+
+input[type="checkbox"]:checked::after {
+  opacity: 1;
+}
+
+.hint {
+  color: hsl(249deg 15% 45%);
+  line-height: 1.25;
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-variation-settings: "wdth" 95;
+}
+
+/* fieldset,
+[role="group"] {
+    margin-inline: 0;
+    text-align: start;
+    padding: 1rem;
+    border: 1px dashed hsl(var(--theme-color));
+    border-radius: 4px;
+}
+
+fieldset:focus-within,
+[role="group"]:focus-within {
+    border-style: solid;
+} */
+
+fieldset:focus-within :is(legend, .hint),
+[role="group"]:focus-within :is([id], .hint) {
+  color: hsl(var(--theme-color));
+}
+
+fieldset {
+  padding: 0;
+  /* border: 0; */
+  border-color: transparent;
+  padding: 0.5rem;
+  margin-inline: -0.5rem;
+  gap: 0 1rem;
+}
+
+fieldset:focus-within {
+  border-color: hsl(var(--theme-color));
+}
+
+legend {
+  padding: 0;
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  float: left;
+}
+
+legend + .hint {
+  margin-block-end: 1rem;
+}
+
+legend + .form-group {
+  margin-block-start: 1rem;
+}
+
+.controls {
+  display: grid;
+  justify-items: start;
+}
+
+.controls label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8em;
+  font-weight: 600;
+  padding-block: 0.5rem;
+  padding-inline: 0.4rem 0.7rem;
+  margin-inline-start: -0.4rem;
+  border-radius: 10px;
+}
+
+.controls li:focus-within label,
+.controls label:is(:hover, :focus-visible) {
+  background: hsl(var(--theme-color) / 10%);
+  box-shadow: inset 0 0 0 1px hsl(var(--theme-color) / 20%);
+}
+
+.input-group {
+  display: inline-grid;
+  justify-self: start;
+}
+
+.input-group > * {
+  grid-row: 1;
+}
+
+.input-group span {
+  font-weight: 700;
+  color: #212121;
+  background: hsl(0deg 0% 90%);
+  padding-inline: 8px;
+  display: grid;
+  margin-inline-end: -1px;
+  border-radius: 4px 0 0 4px;
+  box-shadow: 0 0 0 1px #d3d3d3;
+  align-items: center;
+  z-index: 1;
+  order: -1;
+}
+
+.input-group input:focus-visible + span {
+  background: hsl(var(--theme-color));
+  color: #fff;
+}
+
+.btn {
+  color: #212121;
+  border: 1px solid #d3d3d3;
+  background: hsl(var(--theme-color));
+  font-weight: 600;
+  color: #fff;
+  padding-block: 8px 10px;
+  padding-inline: 12px;
+  border-radius: 10px;
+}
+
+.range-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.125rem;
+}
+
+.range-wrap > input[type="range"] {
+  flex-basis: 100%;
+  order: -1;
+}
+
+.range-wrap::before {
+  --weight: calc(-175 * var(--range) + 1175);
+  content: attr(data-level-min);
+  font-size: 1em;
+  font-family: system-ui;
+  font-weight: var(--weight);
+  font-variation-settings: "wght" var(--weight);
+  transition: 0.25s;
+}
+
+.range-wrap::after {
+  --weight: calc(175 * var(--range) + 125);
+  content: attr(data-level-max);
+  font-size: 1em;
+  font-family: system-ui;
+  font-weight: var(--weight);
+  font-variation-settings: "wght" var(--weight);
+  transition: 0.25s;
+}
+
+.range-wrap input {
+  accent-color: hsl(var(--theme-color));
+  flex: 1;
+}
+
+.range-wrap output {
+  font-weight: 700;
+  min-inline-size: 3rem;
+}
+
+:is(.form-group:not(.inline), fieldset) {
+  display: grid;
+  grid: auto / auto-flow 1fr;
+  grid-template-columns: 0.65fr;
+}
+
+::marker {
+  opacity: 0 !important;
+}
+
+.form-group.range {
+  grid-template-rows: auto;
+}
+
+@media (max-width: 420px) {
+  :is(.form-group:not(.inline), fieldset) {
+    grid-template-columns: 7rem;
+  }
+}
+
+input:is([type="text"], [type="color"], [type="number"], [type="date"]):not(
+    .input-group > *
+  ),
+:is(textarea, .input-group) {
+  align-self: start;
+}
+
+input[name="age"] {
+  inline-size: 8ch;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  appearance: textfield;
+  align-self: self-start;
+}

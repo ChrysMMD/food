@@ -1,0 +1,26 @@
+main {
+    display: grid;
+    grid: auto-flow auto / repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+    padding-inline: max(2rem, (100% - 1200px) / 2);
+    gap: 0 2rem;
+    margin-block: 4rem;
+    align-content: start;
+    align-items: start;
+}
+
+.pets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: 1rem;
+    align-self: start;
+}
+
+.grid {
+    flex: 1 1 300px;
+    display: grid;
+    grid: repeat(4, min-content) / auto-flow 1fr;
+    gap: 1rem;
+    align-items: stretch;
+    object-fit: cover;
+    padding: clamp(1rem, 7vw, 2rem);
+}
